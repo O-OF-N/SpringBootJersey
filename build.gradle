@@ -1,0 +1,27 @@
+buildscript {
+	repositories {
+		//Required repos
+		mavenCentral()
+		maven { url "http://repo.spring.io/snapshot" }
+		maven { url "http://repo.spring.io/milestone" }
+	}
+	dependencies { 
+		//Required dependency for spring-boot plugin
+		classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.0.RELEASE' 
+		}
+}
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'spring-boot'
+war { baseName = 'TestGradle' }
+repositories {
+	mavenCentral()
+	maven { url "http://repo.spring.io/snapshot" }
+	maven { url "http://repo.spring.io/milestone" }
+}
+dependencies {
+	compile ('org.springframework.boot:spring-boot-starter-web')
+	compile ('org.springframework.boot:spring-boot-starter-jersey')
+}
+
+task wrapper(type: Wrapper) { gradleVersion = '1.11' }
