@@ -1,25 +1,29 @@
 package org.test.controller;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.test.config.ApplicationConfig;
 import org.test.model.Someclass;
 import org.test.service.ITestService;
 
-@Controller
-@Path("/test")
+@RestController
+@RequestMapping(value="/test")
 public class TestController {
 	@Autowired
 	ITestService testService;
-	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Autowired
+	ApplicationConfig appConfig;
+
+	@RequestMapping(value="/test1",method=RequestMethod.GET,produces="application/json")
 	public Someclass printMessage(){
-		return testService.getSomeClass();
+		System.out.println("Some where here man");
+		System.out.println("Name = " + appConfig.getName());
+		System.out.println("Age = " + appConfig.getAge());
+		Someclass sc =  testService.getSomeClass();
+		System.out.println("Sc = " + sc);
+		return sc;
 	}
 
 }

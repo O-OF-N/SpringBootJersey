@@ -7,6 +7,7 @@ import org.test.model.Someclass;
 public class TestService implements ITestService{
 	
 	public Someclass getSomeClass(){
+		System.out.println("Inside service");
 		return new Someclass();
 	}
 

@@ -1,0 +1,16 @@
+spring:
+  profiles.active: automated
+---
+spring: 
+  profiles: default
+  
+application: 
+  name: test
+  age: tested
+  
+---
+spring: 
+  profiles: automated
+  
+application: 
+  name: something dont know
