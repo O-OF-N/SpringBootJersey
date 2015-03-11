@@ -1,16 +1,30 @@
 spring:
-  profiles.active: automated
+  profiles.active: dev
+
 ---
 spring: 
-  profiles: default
+  profiles: test
   
-application: 
-  name: test
-  age: tested
-  
----
-spring: 
-  profiles: automated
+spring.datasource: 
+  driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  url: jdbc:sqlserver://tvsql2008r2.cnmc.org:1433;databaseName=Wayfinding
+  username: wayfind 
+  password: W0fin14$
+
+spring.jpa:
+  show-sql: true
+  hibernate:
+    dialect: org.hibernate.dialect.SQLServerDialect
+    ddl-auto: update
+   
   
 application: 
   name: something dont know
+
+---
+spring: 
+  profiles: dev
+ 
+application: 
+  name: test
+  age: tested

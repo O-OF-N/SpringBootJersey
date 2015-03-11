@@ -1,24 +1,46 @@
 package org.test.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "testTable")
 public class Someclass {
 
-	int a = 10;
-	int b = 20;
+	@Id
+	@Column
+	@GeneratedValue
+	private int id;
+	@Column
+	private String firstName;
+	@Column
+	private String lastName;
 
-	public int getA() {
-		return a;
+	public int getId() {
+		return id;
 	}
 
-	public void setA(int a) {
-		this.a = a;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public int getB() {
-		return b;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setB(int b) {
-		this.b = b;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 }

@@ -4,8 +4,8 @@ buildscript {
 		maven { url "http://repo.spring.io/snapshot" }
 		maven { url "http://repo.spring.io/milestone" }
 	}
-	dependencies {  
-		classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.0.RELEASE'  
+	dependencies {
+		classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.0.RELEASE'
 	}
 }
 apply plugin: 'java'
@@ -16,9 +16,13 @@ repositories {
 	mavenCentral()
 	maven { url "http://repo.spring.io/snapshot" }
 	maven { url "http://repo.spring.io/milestone" }
+	flatDir{ dirs 'libs' }
 }
 dependencies {
+	compile (name: 'sqljdbc4')
 	compile ('org.springframework.boot:spring-boot-starter-web')
+	compile ('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile ('org.hsqldb:hsqldb')
 	testCompile ('org.springframework.boot:spring-boot-starter-test')
 }
 
