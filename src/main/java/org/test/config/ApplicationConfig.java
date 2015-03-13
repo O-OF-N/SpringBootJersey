@@ -1,5 +1,7 @@
 package org.test.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -8,25 +10,18 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix="application")
 public class ApplicationConfig {
-
-	private String name;
-	private String age;
-	public String getName() {
-		System.out.println("Trying to get the name" + name);
-		return name;
+	private static final Logger log = LoggerFactory.getLogger(ApplicationConfig.class);
+	private String currentProfile;
+	
+	public String getCurrentProfile() {
+		System.out.println("currentProfile = " + currentProfile);
+		return currentProfile;
 	}
-	public void setName(String name) {
-		System.out.println("Name is set as ="+name);
-		this.name = name;
-	}	
-	public String getAge() {
-		System.out.println("Trying to get the age" + age);
-		return age;
+	public void setCurrentProfile(String currentProfile) {
+		System.out.println("currentProfile = " + currentProfile);
+		this.currentProfile = currentProfile;
 	}
-	public void setAge(String age) {
-		System.out.println("Age is set as ="+age);
-		this.age = age;
-	}
+	
 	
 	
 }

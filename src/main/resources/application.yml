@@ -1,9 +1,9 @@
 spring:
-  profiles.active: test
+  profiles.active: dev
 
 ---
 spring: 
-  profiles: test
+  profiles: stage
   datasource: 
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
     url: jdbc:sqlserver://tvsql2008r2.cnmc.org:1433;databaseName=Wayfinding
@@ -13,11 +13,11 @@ spring:
     show-sql: true
     hibernate:
       dialect: org.hibernate.dialect.SQLServerDialect
-      ddl-auto: create-drop
+      ddl-auto: update
    
   
 application: 
-  name: something dont know
+  currentProfile: stage
 
 ---
 spring: 
@@ -28,5 +28,4 @@ spring:
       ddl-auto: create-drop
  
 application: 
-  name: test
-  age: tested
+  currentProfile: dev

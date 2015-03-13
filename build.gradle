@@ -4,26 +4,34 @@ buildscript {
 		maven { url "http://repo.spring.io/snapshot" }
 		maven { url "http://repo.spring.io/milestone" }
 	}
-	dependencies {
-		classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.0.RELEASE'
-	}
+	dependencies { classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.0.RELEASE' }
 }
-apply plugin: 'java'
+
+
 apply plugin: 'war'
 apply plugin: 'spring-boot'
-war { baseName = 'TestGradle' }
-repositories {
-	mavenCentral()
-	maven { url "http://repo.spring.io/snapshot" }
-	maven { url "http://repo.spring.io/milestone" }
-	flatDir{ dirs 'libs' }
+
+war {  baseName = 'TestGradle'  }
+
+
+
+allprojects{
+	apply plugin: 'java'
+	repositories {
+		mavenCentral()
+		flatDir{ dirs 'libs' }
+	}
+
+	dependencies {
+		compile (name: 'sqljdbc4')
+		compile 'org.codehaus.groovy:groovy-all:2.3.7:indy'
+		compile ('org.springframework.boot:spring-boot-starter-web:1.2.0.RELEASE')
+		compile ('org.springframework.boot:spring-boot-starter-data-jpa:1.2.0.RELEASE')
+		compile ('org.hsqldb:hsqldb:2.3.2')
+		testCompile ('org.springframework.boot:spring-boot-starter-test:1.2.0.RELEASE')
+	}
 }
-dependencies {
-	compile (name: 'sqljdbc4')
-	compile ('org.springframework.boot:spring-boot-starter-web')
-	compile ('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile ('org.hsqldb:hsqldb')
-	testCompile ('org.springframework.boot:spring-boot-starter-test')
-}
+dependencies{ compile project(':SpringBootDepends') }
+
 
 task wrapper(type: Wrapper) { gradleVersion = '1.11' }
