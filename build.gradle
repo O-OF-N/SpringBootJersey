@@ -13,8 +13,6 @@ apply plugin: 'spring-boot'
 
 war {  baseName = 'TestGradle'  }
 
-
-
 allprojects{
 	apply plugin: 'java'
 	repositories {
